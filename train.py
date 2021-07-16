@@ -28,7 +28,7 @@ def config(args):
     cfg.DATASETS.TEST = (args.training_dataset + "_train", args.training_dataset + "_val")
     
     cfg.DATALOADER.NUM_WORKERS = 2
-    cfg.SOLVER.IMS_PER_BATCH = 2                    # 2 GPUs --> each GPU will see 1 image per batch
+    cfg.SOLVER.IMS_PER_BATCH = 32                   # 2 GPUs --> each GPU will see 1 image per batch
     cfg.SOLVER.WARMUP_ITERS = 2000                  # 
     cfg.SOLVER.BASE_LR = 0.001
     cfg.SOLVER.MAX_ITER = 20000

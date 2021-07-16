@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=road_stress
+#SBATCH --job-name=road_sign
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --partition=gpu
@@ -11,28 +11,7 @@
 #SBATCH --mail-user=lntruong@cpp.edu
 
 eval "$(conda shell.bash hook)"
-conda activate py3
-dir=`pwd`
-echo "$dir/dataset/roadstress_new"
-
-if [ ! -d "$dir/dataset" ]; then
-	mkdir dataset
-fi
-if [ ! -d "$dir/dataset/roadstress_new" ]; then
-	cd dataset
-	svn export https://github.com/KossBoii/RoadDamageDetection.git/trunk/roadstress_new
-	cd ..
-else
-	echo "Dataset roadstress_new exists"
-fi
-
-if [ ! -d "$dir/dataset/roadstress_old" ]; then
-	cd dataset
-	svn export https://github.com/KossBoii/RoadDamageDetection.git/trunk/roadstress_old
-	cd ..
-else
-	echo "Dataset roadstress_old exists"
-fi
+conda activate py37
 
 echo "=========================================="
 echo "SLURM_JOB_ID: $SLURM_JOB_ID"
