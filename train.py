@@ -28,22 +28,22 @@ def config(args):
     cfg.DATASETS.TEST = (args.training_dataset + "_train", args.training_dataset + "_val")
     
     cfg.DATALOADER.NUM_WORKERS = 2
-    cfg.SOLVER.IMS_PER_BATCH = 32                   # 2 GPUs --> each GPU will see 1 image per batch
+    cfg.SOLVER.IMS_PER_BATCH = 20                   # 2 GPUs --> each GPU will see 1 image per batch
     cfg.SOLVER.WARMUP_ITERS = 2000                  # 
     cfg.SOLVER.BASE_LR = 0.001
     cfg.SOLVER.MAX_ITER = 20000
     cfg.SOLVER.CHECKPOINT_PERIOD = 10000
-    cfg.MODEL.ANCHOR_GENERATOR.SIZES = [[4,8,16,32,64,128]]
-    cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512
+    cfg.MODEL.ANCHOR_GENERATOR.SIZES = [[8,16,32,64,128]]
+    cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 256
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 7             # 1 category (roadway stress)
 
-    cfg.MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[0.25, 0.5, 1.0, 2.0, 4.0, 8.0]]
+    cfg.MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[0.25, 0.5, 1.0, 2.0]]
     cfg.MODEL.ROI_HEADS.POSITIVE_FRACTION = 0.7
     cfg.MODEL.ROI_HEADS.IOU_THRESHOLDS = [0.5]
-    cfg.INPUT.MIN_SIZE_TRAIN = (600,)
-    cfg.INPUT.MAX_SIZE_TRAIN = 800
-    cfg.INPUT.MIN_SIZE_TEST = 600
-    cfg.INPUT.MAX_SIZE_TEST = 800
+    cfg.INPUT.MIN_SIZE_TRAIN = (240,)
+    cfg.INPUT.MAX_SIZE_TRAIN = 320
+    cfg.INPUT.MIN_SIZE_TEST = 240
+    cfg.INPUT.MAX_SIZE_TEST = 320
 
     #cfg.MODEL.RPN.PRE_NMS_TOPK_TRAIN = 12000
     #cfg.MODEL.RPN.PRE_NMS_TOPK_TEST = 10000
